@@ -1,9 +1,15 @@
-# coursera-machine-learning
+# coursera machine learning assigment - week 2
 
 ex1.m - Octave/MATLAB script that steps you through the exercise
+
 ex1 multi.m - Octave/MATLAB script for the later parts of the exercise
+
 ex1data1.txt - Dataset for linear regression with one variable
+
 ex1data2.txt - Dataset for linear regression with multiple variables
+
+
+**Files included in this exercise**:
 
 * **warmUpExercise.m** - Simple example function in Octave/MATLAB
 * **plotData.m** - Function to display the dataset
