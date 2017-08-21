@@ -23,17 +23,18 @@
 
 *The functions have been implemented by me
 
----
+<br>
 
-**1. Multi-class Classification** 
+##1. Multi-class Classification
  
 For this exercise, I has used logistic regression and neural networks to
 recognize handwritten digits (from 0 to 9). 
 
 Automated handwritten digit recognition is widely used today - from recognizing zip codes (postal codes)
 on mail envelopes to recognizing amounts written on bank checks.
+<br>
 
-**1.1 Dataset**
+####1.1 Dataset
 
 The ex3data1.mat contains 5000 training examples of handwritten digits (This is a subset of the MNIST handwritten digit dataset). Each training example is a 20 pixel by 20 pixel grayscale image of the digit. Each pixel is represented by a floating point number indicating the grayscale intensity at that location. 
 
@@ -42,8 +43,19 @@ The 20 by 20 grid of pixels is "unrolled" into a 400-dimensional vector. Each of
 The second part of the training set is a 5000-dimensional vector y that contains labels for the training set. To make things more compatible with Octave/MATLAB indexing, where there is no zero index, we have mapped the digit zero to the value ten. Therefore, a "0" digit is labeled as "10", while the digits "1" to "9" are labeled as "1" to "9" in their natural order.
 
 The file can be read directly by using the _load_ command.
+<br>
 
-**1.2 Vectorizing Logistic Regression**
+
+####1.2 Vectorizing Logistic Regression
 
 The calculation of cost function and gradient was fully vectorized. **lrCostFunction.m** does not contain any loops.
+
+<br>
+
+####1.4 One-vs-all Classification
+
+In this part of the exercise, I implemented one-vs-all classification by training multiple regularized logistic regression classifiers, one for each of the K classes in our dataset. The code could work for any value of K.
+
+
+
 
