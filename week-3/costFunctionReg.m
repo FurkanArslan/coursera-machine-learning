@@ -21,11 +21,15 @@ grad = zeros(size(theta));
 
 %% ====================== Cost Function ======================
 hypothesis = sigmoid(X * theta);
-h1 = y .* log(hypothesis);
+h1 = -y .* log(hypothesis);
 h2 = (1 - y) .* log(1 - hypothesis);
 
-% Formula for cost function. Note theta0 not involved in reglarization
-J =  (1/m) * (-sum(h1) - sum(h2)) + (lambda/(2*m)) * sum(theta(2:end,1).^2) ;
+% Formula for not regularized cost function
+NotRegularizedJ = (1/m) * sum(h1 - h2);
+
+% Formula for regularized cost function. Note theta0 not involved in reglarization
+theta0ExcludedTheta = theta(2:end,1);
+J = NotRegularizedJ + (lambda / (2*m)) * sum(theta0ExcludedTheta.^2);
 
 %% =============== Compute Cost and Gradient =================
 
@@ -33,7 +37,8 @@ grad(1) = ((1/m) .* sum( (hypothesis - y) .* X(:,1) ));
 
 for i = 2:length(theta)
     grad(i) =( (1/m) .* sum( (hypothesis - y) .* X(:,i) ) ) + ( (lambda/m) * theta(i));
-
+end
+	
 % =============================================================
 
 end
