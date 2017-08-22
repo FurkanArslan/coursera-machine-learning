@@ -33,8 +33,9 @@ inputHypothesis = [ones(m, 1) inputHypothesis];
 % compute activation for hidden layer
 outputHypothesis = sigmoid(inputHypothesis * Theta2') ;
 
-% find which colomn has max value for each row. The index of the colomn corresponds to my prediction
+% find which colomn has max value which correspond to my prediction
 [values,p] = max(outputHypothesis, [], 2);
+
 
 % =========================================================================
 
