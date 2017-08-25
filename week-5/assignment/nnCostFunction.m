@@ -16,11 +16,9 @@ function [J grad] = nnCostFunction(nn_params, ...
 
 % Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
 % for our 2 layer neural network
-Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
-                 hidden_layer_size, (input_layer_size + 1));
+Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), hidden_layer_size, (input_layer_size + 1));
 
-Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
-                 num_labels, (hidden_layer_size + 1));
+Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), num_labels, (hidden_layer_size + 1));
 
 % Setup some useful variables
 m = size(X, 1);
@@ -62,9 +60,38 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+%% ================ Part 1: Cost Function Without Regularization ================
 
+% Add bias to the input layer
+X = [ones(m, 1) X];
 
+% calculate activation for hidden layer
+z2 = X * Theta1';
+a2 = sigmoid(z2);
 
+% Add bias to the hidden layer
+a2 = [ones(m, 1) a2];
+
+% calculate activation for output layer
+z3 = a2 * Theta2';
+hx = sigmoid(z3);
+
+% Convert real y values to 10 dimensional vector. In this vector only
+% actual value is 1 other values are 0. 
+y_values = zeros(m, num_labels);
+for i=1:m
+    y_values(i,y(i))=1;
+end
+
+h1 = -y_values .* log(hx);
+h2 = (1 - y_values) .* log(1 - hx);
+
+%calculate errors for all the labels
+sumOverAllLabels = sum(h1 - h2 , 2);
+%Then calculate errors for the examples in the dataset
+sumOverAllExamples = sum(sumOverAllLabels);
+
+J = (1/m) * sumOverAllExamples;
 
 
 
