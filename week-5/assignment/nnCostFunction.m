@@ -93,21 +93,18 @@ sumOverAllExamples = sum(sumOverAllLabels);
 
 J = (1/m) * sumOverAllExamples;
 
+%% ================ Part 2: Cost Function With Regularization ================
+theta1ForRegularization = Theta1(:,2:end);
+sumOverInputUnitsInTheta1 = sum(theta1ForRegularization.^2,2);
+sumOverAllNodesInTheta1 = sum(sumOverInputUnitsInTheta1);
+ 
+theta2ForRegularization = Theta2(:,2:end);
+sumOverInputUnitsInTheta2 = sum(theta2ForRegularization.^2,2);
+sumOverAllNodesInTheta2 = sum(sumOverInputUnitsInTheta2);
 
+regularizationTerm = (lambda/(2*m)) * ( sumOverAllNodesInTheta1 + sumOverAllNodesInTheta2) ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-% -------------------------------------------------------------
+J = J + regularizationTerm;
 
 % =========================================================================
 

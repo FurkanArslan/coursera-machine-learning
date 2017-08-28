@@ -48,7 +48,7 @@ The file can be read directly by using the _load_ command.
 
 The neural network,that I used, shown in Figure 2:
 
-![alt text](https://github.com/FurkanArslan/coursera-machine-learning-assignments/tree/week-5/assignment/figure-2.PNG "Figure-2")
+![alt text](figure-2.PNG "Figure-2")
 
 It has 3 layers: 
 * an input layer 
@@ -72,7 +72,7 @@ output units (corresponding to the 10 digit classes).
 
 Firstly, I write a code for the cost function without regularization. The formula of cost function without regularization is that:
 
-![alt text](https://github.com/FurkanArslan/coursera-machine-learning-assignments/tree/week-5/assignment/cost-function-without-regularization.PNG "cost-function-without-regularization")
+![alt text](cost-function-without-regularization.PNG "cost-function-without-regularization")
 
 The algorithm of this formula consist of these steps: 
 
@@ -81,3 +81,14 @@ The algorithm of this formula consist of these steps:
 * Then I calculated the summation of errors for each labels.
 * Finally, The summation of errors for the all examples in the dataset were done.
 
+The cost of this function is 0.287629.
+
+<h4>1.3 Regularized cost function</h4>
+
+The cost function for neural networks with regularization is given by:
+
+![alt text](cost-function-with-regularization.PNG "cost-function-with-regularization")
+
+In this part of the exercise, I have added regularization terms for both theta1 and theta2.
+
+The new cost of this function become about 0.383770.
