@@ -92,3 +92,15 @@ The cost function for neural networks with regularization is given by:
 In this part of the exercise, I have added regularization terms for both theta1 and theta2.
 
 The new cost of this function become about 0.383770.
+
+<h2>2. Backpropagation </h2>
+
+> In this part of the exercise, I implemented the backpropagation algorithm to compute the gradient for the neural network cost function.
+
+<h4> 2.1 Sigmoid gradient </h4>
+
+To compute backpropagation algorithm, we need gradient for the sigmoid function. Firstly, I implemented the sigmoid gradient function.
+
+The formula of the sigmoid gradient function is that:
+
+![alt text](sigmoid-gradient.png "gradient for sigmoid function")
