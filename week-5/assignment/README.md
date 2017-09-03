@@ -48,7 +48,7 @@ The file can be read directly by using the _load_ command.
 
 The neural network,that I used, shown in Figure 2:
 
-![alt text](figure-2.PNG "Figure-2")
+![alt text](images/figure-2.PNG "Figure-2")
 
 It has 3 layers: 
 * an input layer 
@@ -72,7 +72,7 @@ output units (corresponding to the 10 digit classes).
 
 Firstly, I write a code for the cost function without regularization. The formula of cost function without regularization is that:
 
-![alt text](cost-function-without-regularization.PNG "cost-function-without-regularization")
+![alt text](images/cost-function-without-regularization.PNG "cost-function-without-regularization")
 
 The algorithm of this formula consist of these steps: 
 
@@ -87,7 +87,7 @@ The cost of this function is 0.287629.
 
 The cost function for neural networks with regularization is given by:
 
-![alt text](cost-function-with-regularization.PNG "cost-function-with-regularization")
+![alt text](images/cost-function-with-regularization.PNG "cost-function-with-regularization")
 
 In this part of the exercise, I have added regularization terms for both theta1 and theta2.
 
@@ -103,4 +103,41 @@ To compute backpropagation algorithm, we need gradient for the sigmoid function.
 
 The formula of the sigmoid gradient function is that:
 
-![alt text](sigmoid-gradient.png "gradient for sigmoid function")
+![alt text](images/sigmoid-gradient.png "gradient for sigmoid function")
+
+<h4> 2.2 Random initialization </h4>
+
+When training neural networks, it is important to randomly initialize the parameters for symmetry breaking. One effective strategy for random initialization is to randomly select values for theta(l) uniformly in the range [e,-e].
+
+I should use the e value as 0,12.
+
+<h4> 2.3 Backpropagation </h4>
+
+The intuition behind the backpropagation algorithm is as follows:
+ 
+* Given a training example ( x<sup>(t)</sup>, y<sup>(t)</sup> ), we will first run a "forward pass" to compute all the activations throughout the network, including the output value of the hypothesis h(x). 
+* Then, for each node j in layer l, we would like to compute an "error term" e<sub>j</sub><sup>(l)</sup> that measures how much that node was "responsible" for any errors in our output.
+
+![alt text](images/Figure-3-Backpropagation-Updates.PNG "Backpropagation Updates")
+
+For an output node, we can directly measure the difference between the network's activation and the true target value, and use that to de ne e<sub>j</sub>³ (since layer 3 is the output layer). For the hidden units, you will compute e<sub>j</sub><sup>(l)</sup> based on a weighted average of the error terms of the nodes in layer (l + 1).
+
+I implemented the steps 1 to 4 in a loop that processes one example
+at a time. Here is the steps:
+
+1. Set the input layer's values (a¹) to the t-th training example x<sup>(t)</sup>. Perform a feedforward pass 
+([Figure 2](images/figure-2.PNG)), computing the activations (z², a², z³, a³) for layers 2 and 3.
+
+2. For each output unit k in layer 3 (the output layer), set 
+![alt text](images/backpropagation-2.PNG "backpropagation-2")
+
+where y<sub>k</sub> &isin; {0,1} indicates whether the current training example belongs to class k (y<sub>k</sub> = 1), or if it belongs to a different class (y<sub>k</sub> = 0).
+
+3. For the hidden layer l = 2, set
+![alt text](images/backpropagation-3.PNG "backpropagation-3")
+
+4. Accumulate the gradient from this example using the following formula. 
+![alt text](images/backpropagation-4.PNG "backpropagation-4")
+
+5. Obtain the (unregularized) gradient for the neural network cost function by dividing the accumulated gradients by 1/m
+![alt text](images/backpropagation-5.PNG "backpropagation-5")

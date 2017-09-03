@@ -60,7 +60,7 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-%% ================ Part 1: Cost Function Without Regularization ================
+%% ================ Cost Function Without Regularization ================
 
 % Add bias to the input layer
 X = [ones(m, 1) X];
@@ -93,7 +93,7 @@ sumOverAllExamples = sum(sumOverAllLabels);
 
 J = (1/m) * sumOverAllExamples;
 
-%% ================ Part 2: Cost Function With Regularization ================
+%% ================ Cost Function With Regularization ================
 theta1ForRegularization = Theta1(:,2:end);
 sumOverInputUnitsInTheta1 = sum(theta1ForRegularization.^2,2);
 sumOverAllNodesInTheta1 = sum(sumOverInputUnitsInTheta1);
@@ -105,8 +105,30 @@ sumOverAllNodesInTheta2 = sum(sumOverInputUnitsInTheta2);
 regularizationTerm = (lambda/(2*m)) * ( sumOverAllNodesInTheta1 + sumOverAllNodesInTheta2) ;
 
 J = J + regularizationTerm;
+%% ================ Backpropagation Algorithm ================
+a3 = hx;
 
-% =========================================================================
+for t=1:m
+    % calculate backpropagation for output layer
+    error3 = zeros(num_labels, 1);
+    
+    for k=1:num_labels
+        yk = y(t) == k;
+        error3(k) = a3(t,k) - yk;
+    end
+    
+    % adding bias unit to hidden layer
+    z2t = [1, z2(t,:)];
+    % calculate backpropagation for hidden layer
+    error2 = (Theta2' * error3) .* sigmoidGradient(z2t)'; 
+    
+    Theta1_grad = Theta1_grad + error2(2:end) * X(t,:);
+    Theta2_grad = Theta2_grad + error3 * a2(t,:);
+    
+end
+
+Theta1_grad = (1/m) * Theta1_grad;
+Theta2_grad = (1/m) * Theta2_grad;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
