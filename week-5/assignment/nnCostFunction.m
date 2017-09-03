@@ -130,8 +130,23 @@ end
 Theta1_grad = (1/m) * Theta1_grad;
 Theta2_grad = (1/m) * Theta2_grad;
 
+%% ================ Regularized Neural Networks ================
+
+%regularize theta1
+temp = Theta1; 
+temp(:, 1) = 0;   % because we don't add anything for j = 0  
+
+% Formula for the gradient of the regularized cost function
+Theta1_grad = Theta1_grad + ( (lambda/m) .* temp);
+
+%regularize theta2
+temp = Theta2; 
+temp(:, 1) = 0;   % because we don't add anything for j = 0 
+
+% Formula for the gradient of the regularized cost function
+Theta2_grad = Theta2_grad + ( (lambda/m) .* temp);
+
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
-
 
 end

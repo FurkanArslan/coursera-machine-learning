@@ -141,3 +141,6 @@ where y<sub>k</sub> &isin; {0,1} indicates whether the current training example 
 
 5. Obtain the (unregularized) gradient for the neural network cost function by dividing the accumulated gradients by 1/m
 ![alt text](images/backpropagation-5.PNG "backpropagation-5")
+
+6. After I have computed &#8710;<sup>(l)</sup> <sub>ij</sub> using backpropagation, I added regularization using this formula:
+![alt text](images/backpropagation-6.PNG "backpropagation-6")
