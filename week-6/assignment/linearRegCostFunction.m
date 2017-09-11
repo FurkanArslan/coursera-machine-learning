@@ -29,7 +29,20 @@ NotRegularizedJ = (1/(2*m)) * sum(( hypothesis - y ).^2);
 theta0ExcludedTheta = theta(2:end);
 J = NotRegularizedJ + (lambda / (2*m)) * sum(theta0ExcludedTheta.^2);
 
-% =========================================================================
+%% =============== Compute Cost and Gradient =================
+
+% Formula for the gradient of the not regularized cost function
+notRegularizedGrad =  + (1/m) .* (X' * ( hypothesis - y ));
+
+temp = theta; 
+temp(1) = 0;   % because we don't add anything for j = 0  
+
+% Formula for the gradient of the regularized cost function
+grad = notRegularizedGrad + ( (lambda/m) .* temp);
+
+% =============================================================
+
+
 
 grad = grad(:);
 

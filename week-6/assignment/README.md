@@ -48,9 +48,19 @@ Figure-1 shows the data:
 
 ![alt text](images/figure-1.PNG "Figure-1")
 
-<h4> 1.1 Visualizing the dataset </h4>
+<h4> 1.2 Regularized linear regression cost function </h4>
 
 The cost function of regularized linear regression:
 ![alt text](images/regularized-linear-regression.PNG "regularized-linear-regression")
 
 where &lambda; is a regularization parameter which controls the degree of regularization (thus, help preventing overfitting). The regularization term puts a penalty on the overal cost J. As the magnitudes of the model parameters &theta;<sub>j</sub> increase, the penalty increases as well.
+
+The error of this function is 303.993
+
+<h4> 1.3 Regularized linear regression gradient </h4>
+
+Correspondingly, the partial derivative of regularized linear regression's cost
+for &theta;<sub>j</sub> is defined as
+![alt text](images/regularized-gradient-descent.PNG "regularized-gradient-descent")
+
+After the calculation, the thetas become [-15.30; 598.250].
