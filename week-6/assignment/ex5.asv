@@ -223,5 +223,5 @@ pause;
 
 test_error = linearRegCostFunction(X_poly_test, ytest, theta, 0);
 
-fprintf('Test Set Error:\n');
+fprintf('Test Set Error 1:\n');
 fprintf('  %f  \n', test_error);
