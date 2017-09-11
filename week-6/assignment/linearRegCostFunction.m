@@ -19,16 +19,15 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+%% ====================== cost function ======================
+hypothesis = X * theta;
 
+% Formula for not regularized cost function
+NotRegularizedJ = (1/(2*m)) * sum(( hypothesis - y ).^2);
 
-
-
-
-
-
-
-
-
+% Formula for regularized cost function. Note theta0 not involved in reglarization
+theta0ExcludedTheta = theta(2:end);
+J = NotRegularizedJ + (lambda / (2*m)) * sum(theta0ExcludedTheta.^2);
 
 % =========================================================================
 
