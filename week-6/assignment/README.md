@@ -71,7 +71,7 @@ In this part, we set regularization parameter &lambda; to zero. Because our curr
 
 ![alt text](images/figure-2.PNG "Figure-2")
 
-<h2> 2 Bias-variance </h2>
+<h2> 2. Bias-variance </h2>
 
 >An important concept in machine learning is the bias-variance tradeoff. Models with high bias are not complex enough for the data and tend to underfit,
  while models with high variance overfit to the training data.
@@ -92,3 +92,18 @@ In particular, note that the training error does not include the regularization 
 ![alt text](images/figure-3.jpg "Figure-3")
 
 In Figure 3, you can observe that both the train error and cross validation error are high when the number of training examples is increased. This reflects a **high bias** problem in the model the linear regression model is too simple and is unable to fit our dataset well.
+
+<h2> 3. Polynomial regression </h2>
+
+> The problem with our linear model was that it was too simple for the data
+  and resulted in underfitting (high bias). In this part of the exercise, I
+  addressed this problem by adding more features.
+  
+For use polynomial regression, our hypothesis has the form:
+
+h<sub>&theta;</sub>(x) =  &theta;<sub>0</sub> + &theta;<sub>1</sub> * (waterLevel) + &theta;<sub>2</sub> * (waterLevel)<sup>2</sup> + ... + &theta;<sub>p</sub> * (waterLevel)<sup>p</sup>
+
+h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub> * x<sub>1</sub> + &theta;<sub>2</sub> * x<sub>2</sub> + ... + &theta;<sub>p</sub> * x<sub>p</sub>
+
+Notice that by defining x<sub>1</sub> = (waterLevel), x<sub>2</sub> = (waterLevel)<sup>2</sup>, ..., x<sub>p</sub> = (waterLevel)<sup>p</sup>, we obtain a linear regression model where the features are the
+various powers of the original value (waterLevel).
