@@ -64,3 +64,31 @@ for &theta;<sub>j</sub> is defined as
 ![alt text](images/regularized-gradient-descent.PNG "regularized-gradient-descent")
 
 After the calculation, the thetas become [-15.30; 598.250].
+
+<h4> 1.4 Fitting linear regression </h4>
+
+In this part, we set regularization parameter &lambda; to zero. Because our current implementation of linear regression is trying to fit a 2-dimensional &theta;, regularization will not be incredibly helpful for a &theta; of such low dimension. The best fit line tells us that the model is not a good t to the data because the data has a non-linear pattern.
+
+![alt text](images/figure-2.PNG "Figure-2")
+
+<h2> 2 Bias-variance </h2>
+
+>An important concept in machine learning is the bias-variance tradeoff. Models with high bias are not complex enough for the data and tend to underfit,
+ while models with high variance overfit to the training data.
+ 
+<h4> 2.1 Learning curves </h4>
+
+I implemented code to generate the learning curves that will be useful in debugging learning algorithms. Recall that a learning curve plots training and cross validation error as a function of training set size.
+
+To plot the learning curve, we need a training and cross validation set error for different _training_ set sizes. To obtain different training set sizes, I used different subsets of the original training set X. Specifically, for a training set size of i, I used the first i examples ( i.e., X (1:i,:) and y (1:i) ).
+
+After learning the &theta; parameters, you should compute the error on the training and cross validation sets. Recall that the training error for a dataset is
+defined as
+
+![alt text](images/training-error-without-regularization.PNG "")
+
+In particular, note that the training error does not include the regularization term. One way to compute the training error is to use your existing cost function and set &lambda; to 0 only when using it to compute the training error and cross validation error. When you are computing the training set error, make sure you compute it on the training subset (i.e., X(1:n,:) and y(1:n)) (instead of the entire training set). However, for the cross validation error, you should compute it over the entire cross validation set.
+
+![alt text](images/figure-3.jpg "Figure-3")
+
+In Figure 3, you can observe that both the train error and cross validation error are high when the number of training examples is increased. This reflects a **high bias** problem in the model the linear regression model is too simple and is unable to fit our dataset well.

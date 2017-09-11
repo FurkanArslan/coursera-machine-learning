@@ -58,6 +58,12 @@ for i = 1:m
   ytrain = y(1:i);
           
   theta = trainLinearReg(Xtrain, ytrain, lambda);
+  
+  hypothesisTrain = Xtrain * theta;
+  aa = (1/(2*m)) * sum(( hypothesis - ytrain ).^2);
+  
+  hypothesis = Xval * theta;
+  ss = (1/(2*m)) * sum(( hypothesis - yval ).^2);
 
   error_train(i) = linearRegCostFunction(Xtrain, ytrain, theta, 0);
   error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
