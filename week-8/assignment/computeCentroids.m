@@ -28,9 +28,9 @@ centroids = zeros(K, n);
 
 for i=1:K 
     sameCentroidIndexes = (idx == i);
-    assignedSameCentroid = X(sameCentroidIndexes,:);
+    assignedSameCentroid = X(sameCentroidIndexes, :);
     
-    centroids(i, :) = (1 / size(assignedSameCentroid,1)) * sum(assignedSameCentroid);
+    centroids(i, :) =  sum(assignedSameCentroid) / length(assignedSameCentroid);
 end
 
 
