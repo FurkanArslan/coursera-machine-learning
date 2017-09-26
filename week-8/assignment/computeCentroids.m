@@ -30,7 +30,7 @@ for i=1:K
     sameCentroidIndexes = (idx == i);
     assignedSameCentroid = X(sameCentroidIndexes, :);
     
-    centroids(i, :) =  sum(assignedSameCentroid) / length(assignedSameCentroid);
+    centroids(i, :) =  sum(assignedSameCentroid) / size(assignedSameCentroid, 1);
 end
 
 
