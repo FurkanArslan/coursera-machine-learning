@@ -40,14 +40,15 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
-J = (1/2) .* sum( (X * Theta' - Y).^2 ); 
+error = R .*(X * Theta' - Y); % calculate inside of error
+J = (1/2) .* sum( error .^ 2 ); % calculate error
+J = sum(J); % sum all dimention to obtain total error
 
+regularizeTheta = 
+J = J + ( (lambda/2) * sum( sum( Theta .^2 ) ) ) + ( (lambda/2) * sum( sum( X .^2 ) ) ); % cost function with regularization
 
-
-
-
-
-
+X_grad = error * Theta ;
+Theta_grad = error' * X ;
 
 % =============================================================
 

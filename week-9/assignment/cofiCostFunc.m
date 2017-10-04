@@ -44,6 +44,10 @@ error = R .*(X * Theta' - Y); % calculate inside of error
 J = (1/2) .* sum( error .^ 2 ); % calculate error
 J = sum(J); % sum all dimention to obtain total error
 
+regularizeTheta = (lambda/2) * sum( sum( Theta .^2 ) );
+regularizeX     = (lambda/2) * sum( sum( X .^2 ) ) ;
+J = J + regularizeTheta + regularizeX; % cost function with regularization
+
 X_grad = error * Theta ;
 Theta_grad = error' * X ;
 
