@@ -48,8 +48,8 @@ regularizeTheta = (lambda/2) * sum( sum( Theta .^2 ) );
 regularizeX     = (lambda/2) * sum( sum( X .^2 ) ) ;
 J = J + regularizeTheta + regularizeX; % cost function with regularization
 
-X_grad = error * Theta ;
-Theta_grad = error' * X ;
+X_grad = error * Theta + lambda .* X;
+Theta_grad = error' * X + lambda .* Theta;
 
 % =============================================================
 
